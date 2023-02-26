@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Golos+Text&family=Rowdies:wght@300&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+      function input() {
+        var food = prompt("What's in your refridgerator?", "Type any food");
+
+        $.post({
+          type: "POST",
+          url: "food",
+          data: food,
+          contentType: "application/text; charset=utf-8",
+          dataType: "json"
+        }).done(function(data) {
+          alert(data);
+        }).fail(function(data) {
+          alert("POST failed");
+        });
+      }
+    </script>
+
+
+    </head>
+
+    <style>
+        .nav {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;    
+            font-family: 'Rowdies', cursive;
+            }
+
+        .food_list {
+            width: 450px;
+            padding: 50px;
+            margin-bottom: 20px;
+            border: 1px solid #bcbcbc;
+            background: #e8e3d5;
+            border-radius: 20px;
+            border-radius: 20px;
+            margin: auto;
+            font-family: 'Golos Text', sans-serif;
+            }
+
+        .food_add {
+            padding: 20px;
+
+        }
+
+        h3 {
+            padding-bottom: 1em;
+        }
+
+        button {
+            padding-bottom: 2em;
+            
+        }
+
+
+    </style>
+
+
+    <body style="background-color:#2fbf91;">
+        <br>
+        <div class="nav">
+            <h1 id="txtContact">
+                What's in my fridge?
+            </h1>
+
+        <img src="https://freight.cargo.site/t/original/i/364dc37e68dea717c420fb95696727e4fec72e32fc5b3def377ae33d091fab9d/section-1-spot.gif" width=20% height=20%>
+            <div class="food_list">
+                <h3 id="txtContact">
+                    Refridgerator
+                </h3>
+                <div class="list">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="list">
+                <a href="http://127.0.0.1:5000/result">Find recipe!</a>
+            </div>
+            </div>
+            <br>
+            <button onclick="input()" style = "padding: 20px 50px" > Add Food </button>
+        </div>
+        
+    </body>
+</html>
